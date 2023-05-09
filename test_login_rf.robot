@@ -3,14 +3,14 @@ Library  SeleniumLibrary
 Documentation    Suite description #automated tests for scout website
 
 *** Variables ***
-${LOGINURL}      https://scouts-test.futbolkolektyw.pl/en
+${LOGINURL}      https://scouts.futbolkolektyw.pl/en/
 ${BROWSER}        Firefox
 ${EMAILINPUT}      xpath=//*[@id='login']
 ${PASSWORDINPUT}       xpath=//*[@id='password']
 ${SIGNINBUTTON}        xpath=//*[text()='Sign in']
-${PAGELOGO}        xpath=/html/body/div/form/div/div[1]/h5
+${PAGELOGO}        xpath=//*[@id="__next"]/div[1]/main/div[3]/div[1]/div/div[1]
 ${ADDPLAYERBUTTON}      xpath=//*[text()='Add player']
-${ADDPLAYERURL}     https://scouts-test.futbolkolektyw.pl/en/players/add
+${ADDPLAYERURL}     https://scouts.futbolkolektyw.pl/en/players/add
 ${NAMEINPUT}        xpath=//input[@name='name']
 ${SURNAMEINPUT}     xpath=//input[@name='surname']
 ${AGEINPUT}     xpath=//input[@name='age']
@@ -85,6 +85,7 @@ Click on the Add player button
     Capture Element Screenshot  ${ADDPLAYERBUTTON}
     Click Element    ${ADDPLAYERBUTTON}
 Type in name
+    Wait Until Element Is Visible   ${NAMEINPUT}
     Input Text  ${NAMEINPUT}    Piotr
 Type in surname
     Input Text  ${SURNAMEINPUT}    Kowalski
